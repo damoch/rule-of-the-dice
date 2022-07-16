@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     public Text TurnNumberText;
     public Text UpcomingCardsList;
+    public Text ActiveCardsList;
     public int TurnNumber;
     public List<CardData> CardsSource;
     public CardGUI[] CardsOnHandGUI;
@@ -18,9 +19,13 @@ public class GameController : MonoBehaviour
     public Button NextTurnButton;
     private Dictionary<DiceController, bool> _hasDiceEndedRoll;
     public int CurrentDicerollValue;
+    public CountryStats Stats;
+    public Text StatsText;
+    public List<CardData> AppliedPolicies;
     // Start is called before the first frame update
     void Start()
     {
+        AppliedPolicies = new List<CardData>();
         NextTurnButton.interactable = false;
         CardsQueue = new Queue<CardData>();
         CardsOnHand = new Dictionary<int, CardData>
@@ -35,7 +40,13 @@ public class GameController : MonoBehaviour
         {
             SetCardGuiFor(item.Key, item.Value);
         }
+        UpdateStats();
         //NextTurn();
+    }
+
+    private void UpdateStats()
+    {
+        StatsText.text = $"Population Happiness: {Stats.Happiness}\nPollution level: {Stats.Pollution}\nCredits: {Stats.Money}";
     }
 
     internal void RegisterDice(DiceController diceController)
@@ -83,6 +94,53 @@ public class GameController : MonoBehaviour
         var result = _hasDiceEndedRoll.Keys.Sum(x => x.Value);
 
         Debug.Log($"Result = {result}");
+        if(result > 6)
+        {
+            var policy = CardsQueue.Dequeue();
+            AppliedPolicies.Add(policy);
+        }
+        else
+        {
+            CardsQueue.Dequeue();
+        }
+        SetCardQueue();
+        ApplyPolicies();
+    }
+
+    private void ApplyPolicies()
+    {
+        if(AppliedPolicies.Count == 0)
+        {
+            return;
+        }
+        var newList = new List<CardData>();
+        foreach (var item in AppliedPolicies)
+        {
+            Stats.Happiness += item.HappinesValue;
+            Stats.Pollution += item.PollutionValue;
+            Stats.Money += item.MoneyValue;
+
+            if(item.DurationInTurns - 1 <= 0)
+            {
+                continue;
+            }
+            var ymp = item;
+            ymp.DurationInTurns--;
+            newList.Add(ymp);
+        }
+        AppliedPolicies = newList;
+        UpdateActivePolicyList();
+        UpdateStats();
+        NextTurnButton.interactable = CardsQueue.Count >= MinimalNumberOfCardsInQueue;
+    }
+
+    private void UpdateActivePolicyList()
+    {
+        ActiveCardsList.text = string.Empty;
+        foreach (var item in AppliedPolicies)
+        {
+            ActiveCardsList.text = $"{item.Description} - {item.DurationInTurns} turns";
+        }
     }
 
     private void StartDiceRoll()
