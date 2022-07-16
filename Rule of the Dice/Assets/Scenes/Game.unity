@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 275079136}
   - component: {fileID: 275079135}
   m_Layer: 5
-  m_Name: Card0 (1)
+  m_Name: Card1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 444799887}
   - component: {fileID: 444799886}
   m_Layer: 5
-  m_Name: Card0 (3)
+  m_Name: Card3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 1462592317}
   - component: {fileID: 1462592316}
   m_Layer: 5
-  m_Name: Card0 (2)
+  m_Name: Card2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2980,6 +2980,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurnNumber: 0
+  CardsSource:
+  - Description: Ban personal cars
+    HappinesValue: -5
+    PollutionValue: -5
+    MoneyValue: 0
+    DurationInTurns: 5
+  - Description: Corporate tax cut
+    HappinesValue: 0
+    PollutionValue: 5
+    MoneyValue: -2
+    DurationInTurns: 10
+  - Description: Public transport investment
+    HappinesValue: 3
+    PollutionValue: 3
+    MoneyValue: -3
+    DurationInTurns: 4
+  - Description: Anti corruption program
+    HappinesValue: 4
+    PollutionValue: 0
+    MoneyValue: -4
+    DurationInTurns: 5
+  - Description: Tax increase
+    HappinesValue: -6
+    PollutionValue: -3
+    MoneyValue: 4
+    DurationInTurns: 5
+  - Description: Startups investment program
+    HappinesValue: 4
+    PollutionValue: 3
+    MoneyValue: -2
+    DurationInTurns: 2
+  - Description: Safe waste removal
+    HappinesValue: 3
+    PollutionValue: -4
+    MoneyValue: 4
+    DurationInTurns: 6
 --- !u!4 &1887405030
 Transform:
   m_ObjectHideFlags: 0
@@ -3348,7 +3384,7 @@ GameObject:
   - component: {fileID: 2081978736}
   - component: {fileID: 2081978735}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EndTurnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
