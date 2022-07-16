@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NextTurnButton.interactable = false;
         CardsQueue = new Queue<CardData>();
         CardsOnHand = new Dictionary<int, CardData>
         {
