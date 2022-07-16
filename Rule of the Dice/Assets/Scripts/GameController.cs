@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public Text TurnNumberText;
+    public Text UpcomingCardsList;
     public int TurnNumber;
     public List<CardData> CardsSource;
     public CardGUI[] CardsOnHandGUI;
     public Dictionary<int,CardData> CardsOnHand;
     public Queue<CardData> CardsQueue;
+    public CurrentCardController CurrentCardController;
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +111,15 @@ public class GameController : MonoBehaviour
 
     private void SetCardQueue()
     {
-
+        var cardArray = CardsQueue.ToArray();
+        CurrentCardController.SetCardData(cardArray[0]);
+        UpcomingCardsList.text = string.Empty;
+        if (cardArray.Length > 0)
+        {
+            for (int i = 1; i < cardArray.Length; i++)
+            {
+                UpcomingCardsList.text += $"{cardArray[i].Description}\n";
+            }
+        }
     }
 }

@@ -9,5 +9,6 @@
         public int MoneyValue;
         public int DurationInTurns;
         public int DiscardCost;
+        public string LongDescription;
     }
 }
