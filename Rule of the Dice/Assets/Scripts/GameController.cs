@@ -143,6 +143,21 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void DiscardCard(int id)
+    {
+        Debug.Log($"Discarding {id}");
+        if (Stats.Money< CardsOnHand[id].DiscardCost)
+        {
+            return;
+        }
+        Debug.Log($"Discarding {id}");
+        Stats.Money -= CardsOnHand[id].DiscardCost;
+        var newCard = GetNewCard();
+        CardsOnHand[id] = newCard;
+        SetCardGuiFor(id, newCard);
+        UpdateStats();
+    }
+
     private void StartDiceRoll()
     {
         //Ugly-ass hack :/
