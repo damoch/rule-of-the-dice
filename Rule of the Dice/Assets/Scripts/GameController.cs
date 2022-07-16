@@ -1,9 +1,11 @@
 ﻿using Assets.Scripts;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public Text TurnNumberText;
     public int TurnNumber;
     public List<CardData> CardsSource;
     public CardGUI[] CardsOnHandGUI;
@@ -12,6 +14,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CardsQueue = new Queue<CardData>(4);
         CardsOnHand = new Dictionary<int, CardData>
         {
             { 0, GetNewCard() },
@@ -24,6 +27,7 @@ public class GameController : MonoBehaviour
         {
             SetCardGuiFor(item.Key, item.Value);
         }
+        NextTurn();
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class GameController : MonoBehaviour
     {
         TurnNumber++;
         Debug.Log("Turn " + TurnNumber);
+        TurnNumberText.text = $"Turn: {TurnNumber}";
     }
 
     private CardData GetNewCard()
@@ -94,9 +99,16 @@ public class GameController : MonoBehaviour
     public void QueueCard(int id)
     {
         var card = CardsOnHand[id];
+        CardsQueue.Enqueue(card);
         Debug.Log($"Queueing card: {card.Description}");
         var newCard = GetNewCard();
         CardsOnHand[id] = newCard;
         SetCardGuiFor(id, newCard);
+        SetCardQueue();
+    }
+
+    private void SetCardQueue()
+    {
+
     }
 }
