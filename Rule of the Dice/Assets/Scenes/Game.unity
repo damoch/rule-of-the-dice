@@ -481,7 +481,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 243570653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1887405029}
+        m_MethodName: QueueCard
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &243570653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +530,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243570650}
   m_CullTransparentMesh: 0
+--- !u!1 &266534998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266534999}
+  - component: {fileID: 266535001}
+  - component: {fileID: 266535000}
+  m_Layer: 5
+  m_Name: DiscardCostText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &266534999
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266534998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2086845129}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 67.5, y: -112.5}
+  m_SizeDelta: {x: 135, y: 19}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &266535000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266534998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Discard: 3 credits'
+--- !u!222 &266535001
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266534998}
+  m_CullTransparentMesh: 0
 --- !u!1 &275079133
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +644,7 @@ RectTransform:
   - {fileID: 1851708909}
   - {fileID: 652771429}
   - {fileID: 2094817190}
+  - {fileID: 1226393577}
   m_Father: {fileID: 725633692}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -613,6 +703,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DescriptionText: {fileID: 1200083050}
+  ProsText: {fileID: 1851708910}
+  ConsText: {fileID: 652771430}
+  DurationInTurnsText: {fileID: 2094817191}
+  DiscardCostText: {fileID: 1226393578}
 --- !u!1 &341064602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1100,7 @@ RectTransform:
   - {fileID: 1864514908}
   - {fileID: 1481109922}
   - {fileID: 469231144}
+  - {fileID: 1934097717}
   m_Father: {fileID: 725633692}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1064,6 +1159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DescriptionText: {fileID: 342165045}
+  ProsText: {fileID: 1864514909}
+  ConsText: {fileID: 1481109923}
+  DurationInTurnsText: {fileID: 469231145}
+  DiscardCostText: {fileID: 1934097718}
 --- !u!1 &469231143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2448,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200083048}
   m_CullTransparentMesh: 0
+--- !u!1 &1226393576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226393577}
+  - component: {fileID: 1226393579}
+  - component: {fileID: 1226393578}
+  m_Layer: 5
+  m_Name: DiscardCostText (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1226393577
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226393576}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 275079134}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 67.5, y: -112.5}
+  m_SizeDelta: {x: 135, y: 19}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1226393578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226393576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Discard: 3 credits'
+--- !u!222 &1226393579
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226393576}
+  m_CullTransparentMesh: 0
 --- !u!1 &1337507278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,7 +2687,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1356621442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1887405029}
+        m_MethodName: QueueCard
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1356621442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2660,8 +2848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -110.58}
-  m_SizeDelta: {x: 270, y: 19}
+  m_AnchoredPosition: {x: -67.5, y: -110.58}
+  m_SizeDelta: {x: 135, y: 19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430747151
 MonoBehaviour:
@@ -2740,6 +2928,7 @@ RectTransform:
   - {fileID: 1021023282}
   - {fileID: 1640960008}
   - {fileID: 853069785}
+  - {fileID: 1853482129}
   m_Father: {fileID: 725633692}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2798,6 +2987,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DescriptionText: {fileID: 1925881657}
+  ProsText: {fileID: 1021023283}
+  ConsText: {fileID: 1640960009}
+  DurationInTurnsText: {fileID: 853069786}
+  DiscardCostText: {fileID: 1853482130}
 --- !u!1 &1481109921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +3228,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677487214}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1887405029}
+        m_MethodName: QueueCard
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1677487214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3151,6 +3355,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851708908}
   m_CullTransparentMesh: 0
+--- !u!1 &1853482128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853482129}
+  - component: {fileID: 1853482131}
+  - component: {fileID: 1853482130}
+  m_Layer: 5
+  m_Name: DiscardCostText (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1853482129
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853482128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1462592315}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 67.5, y: -112.5}
+  m_SizeDelta: {x: 135, y: 19}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1853482130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853482128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Discard: 3 credits'
+--- !u!222 &1853482131
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853482128}
+  m_CullTransparentMesh: 0
 --- !u!1 &1864514907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,36 +3547,43 @@ MonoBehaviour:
     PollutionValue: -5
     MoneyValue: 0
     DurationInTurns: 5
+    DiscardCost: 2
   - Description: Corporate tax cut
     HappinesValue: 0
     PollutionValue: 5
     MoneyValue: -2
     DurationInTurns: 10
+    DiscardCost: 6
   - Description: Public transport investment
     HappinesValue: 3
     PollutionValue: 3
     MoneyValue: -3
     DurationInTurns: 4
+    DiscardCost: 3
   - Description: Anti corruption program
     HappinesValue: 4
     PollutionValue: 0
     MoneyValue: -4
     DurationInTurns: 5
+    DiscardCost: 1
   - Description: Tax increase
     HappinesValue: -6
     PollutionValue: -3
     MoneyValue: 4
     DurationInTurns: 5
+    DiscardCost: 6
   - Description: Startups investment program
     HappinesValue: 4
     PollutionValue: 3
     MoneyValue: -2
     DurationInTurns: 2
+    DiscardCost: 2
   - Description: Safe waste removal
     HappinesValue: 3
     PollutionValue: -4
     MoneyValue: 4
     DurationInTurns: 6
+    DiscardCost: 1
   CardsOnHandGUI:
   - {fileID: 2086845132}
   - {fileID: 275079137}
@@ -3536,6 +3825,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925881655}
   m_CullTransparentMesh: 0
+--- !u!1 &1934097716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934097717}
+  - component: {fileID: 1934097719}
+  - component: {fileID: 1934097718}
+  m_Layer: 5
+  m_Name: DiscardCostText (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1934097717
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934097716}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 444799885}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 67.5, y: -112.5}
+  m_SizeDelta: {x: 135, y: 19}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1934097718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934097716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Discard: 3 credits'
+--- !u!222 &1934097719
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934097716}
+  m_CullTransparentMesh: 0
 --- !u!1 &1953340415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3617,7 +3984,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1953340418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1887405029}
+        m_MethodName: QueueCard
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1953340418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3821,6 +4199,7 @@ RectTransform:
   - {fileID: 1908713077}
   - {fileID: 1032034426}
   - {fileID: 1430747150}
+  - {fileID: 266534999}
   m_Father: {fileID: 725633692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3879,6 +4258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DescriptionText: {fileID: 766512122}
+  ProsText: {fileID: 1908713078}
+  ConsText: {fileID: 1032034427}
+  DurationInTurnsText: {fileID: 1430747151}
+  DiscardCostText: {fileID: 266535000}
 --- !u!1 &2094817189
 GameObject:
   m_ObjectHideFlags: 0
