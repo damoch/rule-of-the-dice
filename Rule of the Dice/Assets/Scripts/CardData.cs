@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts
+﻿namespace Assets.Scripts
 {
     [System.Serializable]
     public struct CardData
