@@ -13,10 +13,12 @@ public class GameController : MonoBehaviour
     public Dictionary<int,CardData> CardsOnHand;
     public Queue<CardData> CardsQueue;
     public CurrentCardController CurrentCardController;
+    public int MinimalNumberOfCardsInQueue;
+    public Button NextTurnButton;
     // Start is called before the first frame update
     void Start()
     {
-        CardsQueue = new Queue<CardData>(4);
+        CardsQueue = new Queue<CardData>();
         CardsOnHand = new Dictionary<int, CardData>
         {
             { 0, GetNewCard() },
@@ -107,6 +109,7 @@ public class GameController : MonoBehaviour
         CardsOnHand[id] = newCard;
         SetCardGuiFor(id, newCard);
         SetCardQueue();
+        NextTurnButton.interactable = CardsQueue.Count >= MinimalNumberOfCardsInQueue;
     }
 
     private void SetCardQueue()

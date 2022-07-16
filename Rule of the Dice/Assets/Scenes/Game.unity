@@ -4558,6 +4558,8 @@ MonoBehaviour:
   - {fileID: 1462592318}
   - {fileID: 444799888}
   CurrentCardController: {fileID: 1041461858}
+  MinimalNumberOfCardsInQueue: 4
+  NextTurnButton: {fileID: 2081978735}
 --- !u!4 &1887405030
 Transform:
   m_ObjectHideFlags: 0
