@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +53,33 @@ public class GameController : MonoBehaviour
 
     private void UpdateStats()
     {
-        StatsText.text = $"Population Happiness: {Stats.Happiness}\nPollution level: {Stats.Pollution}\nCredits: {Stats.Money}";
+        var creditsPerTurn = AppliedPolicies.Sum(x => x.MoneyValue);
+        var happinessPerTurn = AppliedPolicies.Sum(x => x.HappinesValue);
+        var pollutionPerTurn = AppliedPolicies.Sum(x => x.PollutionValue);
+        var sb = new StringBuilder();
+        sb.Append($"Population Happiness: {Stats.Happiness}");
+        if(happinessPerTurn != 0)
+        {
+            sb.Append($"({happinessPerTurn}/turn)");
+        }
+        sb.Append(Environment.NewLine);
+
+        sb.Append($"Pollution level: {Stats.Pollution}");
+        if (pollutionPerTurn != 0)
+        {
+            sb.Append($"({pollutionPerTurn}/turn)");
+        }
+        sb.Append(Environment.NewLine);
+
+        sb.Append($"Credits: {Stats.Money}");
+
+        if (creditsPerTurn != 0)
+        {
+            sb.Append($"({creditsPerTurn}/turn)");
+        }
+        sb.Append(Environment.NewLine);
+
+        StatsText.text = sb.ToString();
     }
 
     internal void RegisterDice(DiceController diceController)
@@ -111,6 +139,7 @@ public class GameController : MonoBehaviour
         SetCardQueue();
         ApplyPolicies();
         CheckLosingConditions();
+        NextTurnButton.interactable = CardsQueue.Count >= MinimalNumberOfCardsInQueue;
     }
 
     private void ApplyPolicies()
@@ -137,7 +166,6 @@ public class GameController : MonoBehaviour
         AppliedPolicies = newList;
         UpdateActivePolicyList();
         UpdateStats();
-        NextTurnButton.interactable = CardsQueue.Count >= MinimalNumberOfCardsInQueue;
         ValidateDiscardButtons();
     }
 
@@ -169,7 +197,7 @@ public class GameController : MonoBehaviour
 
     private CardData GetNewCard()
     {
-        var result = Random.Range(0, CardsSource.Count - 1);
+        var result = UnityEngine.Random.Range(0, CardsSource.Count - 1);
         var card = CardsSource[result];
         Debug.Log("Card generated: " + card.Description);
         return card;
