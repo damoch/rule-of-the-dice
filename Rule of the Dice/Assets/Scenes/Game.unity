@@ -2024,8 +2024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -101.7, y: -43.5}
-  m_SizeDelta: {x: 200, y: 87.03125}
+  m_AnchoredPosition: {x: -101.7, y: -25.5}
+  m_SizeDelta: {x: 200, y: 51.102417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713099494
 MonoBehaviour:
@@ -2227,6 +2227,84 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766512120}
+  m_CullTransparentMesh: 0
+--- !u!1 &790674238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 790674239}
+  - component: {fileID: 790674241}
+  - component: {fileID: 790674240}
+  m_Layer: 5
+  m_Name: WarningsText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &790674239
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790674238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 957300923}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -124.9, y: -76.602}
+  m_SizeDelta: {x: 250, y: 51.102417}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &790674240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790674238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0.030669212, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &790674241
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790674238}
   m_CullTransparentMesh: 0
 --- !u!1 &820606051
 GameObject:
@@ -2772,6 +2850,7 @@ RectTransform:
   - {fileID: 1255193774}
   - {fileID: 713099493}
   - {fileID: 425158829}
+  - {fileID: 790674239}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5143,6 +5222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46be0410b3e1efb4cb0b17221810c2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WarningsText: {fileID: 790674240}
   TurnNumberText: {fileID: 1806521995}
   UpcomingCardsList: {fileID: 379045854}
   ActiveCardsList: {fileID: 820606053}
@@ -5207,11 +5287,20 @@ MonoBehaviour:
   NextTurnButton: {fileID: 2081978735}
   CurrentDicerollValue: 0
   Stats:
-    Money: 30
-    Happiness: 45
-    Pollution: 55
+    Money: 40
+    Happiness: 35
+    Pollution: 60
   StatsText: {fileID: 713099494}
   AppliedPolicies: []
+  Rules:
+    MaxTurnsInDebt: 10
+    MaxTurnsInMaxPollution: 10
+    MaxTurnsOfMaxUnhappiness: 10
+    UnhappinessTreshold: 20
+    PollutionTreshold: 80
+  CurrentTurnsInDebt: 0
+  CurrentTurnsInExceedingPollution: 0
+  TurnsOfUnhappiness: 0
 --- !u!4 &1887405030
 Transform:
   m_ObjectHideFlags: 0

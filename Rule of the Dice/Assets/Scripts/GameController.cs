@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public Text WarningsText;
     public Text TurnNumberText;
     public Text UpcomingCardsList;
     public Text ActiveCardsList;
@@ -22,6 +23,10 @@ public class GameController : MonoBehaviour
     public CountryStats Stats;
     public Text StatsText;
     public List<CardData> AppliedPolicies;
+    public Rules Rules;
+    public int CurrentTurnsInDebt;
+    public int CurrentTurnsInExceedingPollution;
+    public int TurnsOfUnhappiness;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +110,7 @@ public class GameController : MonoBehaviour
         }
         SetCardQueue();
         ApplyPolicies();
+        CheckLosingConditions();
     }
 
     private void ApplyPolicies()
@@ -140,7 +146,7 @@ public class GameController : MonoBehaviour
         ActiveCardsList.text = string.Empty;
         foreach (var item in AppliedPolicies)
         {
-            ActiveCardsList.text = $"{item.Description} - {item.DurationInTurns} turns";
+            ActiveCardsList.text += $"{item.Description} - {item.DurationInTurns} turns\n";
         }
     }
 
@@ -263,5 +269,59 @@ public class GameController : MonoBehaviour
             CardGUI item = CardsOnHandGUI[i];
             item.DiscardButton.interactable = CardsOnHand[i].DiscardCost <= Stats.Money;
         }
+    }
+
+    private void CheckLosingConditions()
+    {
+        WarningsText.text = string.Empty;
+
+
+        if(Stats.Money < 0)
+        {
+            CurrentTurnsInDebt++;
+            if(CurrentTurnsInDebt >= Rules.MaxTurnsInDebt)
+            {
+                GameOver();
+            }
+            WarningsText.text += $"Turns until bankrupcy: {Rules.MaxTurnsInDebt - CurrentTurnsInDebt}\n";
+        }
+        else
+        {
+            CurrentTurnsInDebt = 0;
+        }
+
+        if(Stats.Pollution >= Rules.PollutionTreshold)
+        {
+            CurrentTurnsInExceedingPollution++;
+            if (CurrentTurnsInExceedingPollution >= Rules.MaxTurnsInMaxPollution)
+            {
+                GameOver();
+            }
+            WarningsText.text += $"Turns until environmental disaster: {Rules.MaxTurnsInMaxPollution - CurrentTurnsInExceedingPollution}\n";
+        }
+        else 
+        {
+            CurrentTurnsInExceedingPollution = 0;
+        }
+
+        if (Stats.Happiness <= Rules.UnhappinessTreshold)
+        {
+            TurnsOfUnhappiness++;
+            if (TurnsOfUnhappiness >= Rules.MaxTurnsOfMaxUnhappiness)
+            {
+                GameOver();
+            }
+            WarningsText.text += $"Turns until revolution: {Rules.MaxTurnsOfMaxUnhappiness - TurnsOfUnhappiness}\n";
+        }
+        else
+        {
+            TurnsOfUnhappiness = 0;
+        }
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Game over");
+        Debug.Break();
     }
 }
