@@ -132,6 +132,7 @@ public class GameController : MonoBehaviour
         UpdateActivePolicyList();
         UpdateStats();
         NextTurnButton.interactable = CardsQueue.Count >= MinimalNumberOfCardsInQueue;
+        ValidateDiscardButtons();
     }
 
     private void UpdateActivePolicyList()
@@ -141,21 +142,6 @@ public class GameController : MonoBehaviour
         {
             ActiveCardsList.text = $"{item.Description} - {item.DurationInTurns} turns";
         }
-    }
-
-    public void DiscardCard(int id)
-    {
-        Debug.Log($"Discarding {id}");
-        if (Stats.Money< CardsOnHand[id].DiscardCost)
-        {
-            return;
-        }
-        Debug.Log($"Discarding {id}");
-        Stats.Money -= CardsOnHand[id].DiscardCost;
-        var newCard = GetNewCard();
-        CardsOnHand[id] = newCard;
-        SetCardGuiFor(id, newCard);
-        UpdateStats();
     }
 
     private void StartDiceRoll()
@@ -216,7 +202,7 @@ public class GameController : MonoBehaviour
         {
             CardsOnHandGUI[id].ConsText.text += "Money--\n";
         }
-        CardsOnHandGUI[id].DiscardCostText.text = $"Discard: {cardData.DiscardCost} credits";
+        CardsOnHandGUI[id].DiscardCostText.text = $"Discard: {cardData.DiscardCost} credits"; 
     }
 
     private void ClearCardGui(CardGUI cardGUI)
@@ -226,6 +212,22 @@ public class GameController : MonoBehaviour
         cardGUI.DescriptionText.text = string.Empty;
         cardGUI.DurationInTurnsText.text = string.Empty;
         cardGUI.DiscardCostText.text = string.Empty;
+    }
+
+    public void DiscardCard(int id)
+    {
+        Debug.Log($"Discarding {id}");
+        if (Stats.Money < CardsOnHand[id].DiscardCost)
+        {
+            return;
+        }
+        Debug.Log($"Discarding {id}");
+        Stats.Money -= CardsOnHand[id].DiscardCost;
+        var newCard = GetNewCard();
+        CardsOnHand[id] = newCard;
+        SetCardGuiFor(id, newCard);
+        UpdateStats();
+        ValidateDiscardButtons();
     }
 
     public void QueueCard(int id)
@@ -251,6 +253,15 @@ public class GameController : MonoBehaviour
             {
                 UpcomingCardsList.text += $"{cardArray[i].Description}\n";
             }
+        }
+    }
+
+    private void ValidateDiscardButtons()
+    {
+        for (int i = 0; i < CardsOnHandGUI.Length; i++)
+        {
+            CardGUI item = CardsOnHandGUI[i];
+            item.DiscardButton.interactable = CardsOnHand[i].DiscardCost <= Stats.Money;
         }
     }
 }

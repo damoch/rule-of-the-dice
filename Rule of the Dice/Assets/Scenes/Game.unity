@@ -278,7 +278,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 15303841}
   m_OnClick:
     m_PersistentCalls:
@@ -874,6 +874,7 @@ MonoBehaviour:
   ConsText: {fileID: 652771430}
   DurationInTurnsText: {fileID: 2094817191}
   DiscardCostText: {fileID: 1226393578}
+  DiscardButton: {fileID: 398663832}
 --- !u!1 &341064602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,7 +1266,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 398663833}
   m_OnClick:
     m_PersistentCalls:
@@ -1573,6 +1574,7 @@ MonoBehaviour:
   ConsText: {fileID: 1481109923}
   DurationInTurnsText: {fileID: 469231145}
   DiscardCostText: {fileID: 1934097718}
+  DiscardButton: {fileID: 1098009232}
 --- !u!1 &469231143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,7 +2461,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 860610239}
   m_OnClick:
     m_PersistentCalls:
@@ -3191,7 +3193,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1098009233}
   m_OnClick:
     m_PersistentCalls:
@@ -4179,6 +4181,7 @@ MonoBehaviour:
   ConsText: {fileID: 1640960009}
   DurationInTurnsText: {fileID: 853069786}
   DiscardCostText: {fileID: 1853482130}
+  DiscardButton: {fileID: 860610238}
 --- !u!1 &1481109921
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,6 +5885,7 @@ MonoBehaviour:
   ConsText: {fileID: 1032034427}
   DurationInTurnsText: {fileID: 1430747151}
   DiscardCostText: {fileID: 266535000}
+  DiscardButton: {fileID: 15303840}
 --- !u!1 &2094817189
 GameObject:
   m_ObjectHideFlags: 0

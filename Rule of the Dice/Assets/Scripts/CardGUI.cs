@@ -8,4 +8,5 @@ public class CardGUI : MonoBehaviour
     public Text ConsText;
     public Text DurationInTurnsText;
     public Text DiscardCostText;
+    public Button DiscardButton;
 }
