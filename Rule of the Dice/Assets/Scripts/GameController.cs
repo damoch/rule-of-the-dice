@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentCardController.gameObject.SetActive(false);
+        UpcomingCardsList.gameObject.transform.parent.gameObject.SetActive(false);
+        ActiveCardsList.gameObject.transform.parent.gameObject.SetActive(false);
         AppliedPolicies = new List<CardData>();
         NextTurnButton.interactable = false;
         CardsQueue = new Queue<CardData>();
@@ -172,10 +175,16 @@ public class GameController : MonoBehaviour
     private void UpdateActivePolicyList()
     {
         ActiveCardsList.text = string.Empty;
+        if(AppliedPolicies.Count == 0)
+        {
+            return;
+        }
         foreach (var item in AppliedPolicies)
         {
             ActiveCardsList.text += $"{item.Description} - {item.DurationInTurns} turns\n";
         }
+
+        ActiveCardsList.gameObject.transform.parent.gameObject.SetActive(true);
     }
 
     private void StartDiceRoll()
@@ -279,10 +288,15 @@ public class GameController : MonoBehaviour
     private void SetCardQueue()
     {
         var cardArray = CardsQueue.ToArray();
+        if (!CurrentCardController.gameObject.activeInHierarchy)
+        {
+            CurrentCardController.gameObject.SetActive(true);
+        }
         CurrentCardController.SetCardData(cardArray[0]);
         UpcomingCardsList.text = string.Empty;
         if (cardArray.Length > 0)
         {
+            UpcomingCardsList.gameObject.transform.parent.gameObject.SetActive(cardArray.Length > 1);
             for (int i = 1; i < cardArray.Length; i++)
             {
                 UpcomingCardsList.text += $"{cardArray[i].Description}\n";
