@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public Text ResultText;
+    public Text ResultDescText;
     public Text WarningsText;
     public Text TurnNumberText;
     public Text UpcomingCardsList;
@@ -51,7 +53,9 @@ public class GameController : MonoBehaviour
             SetCardGuiFor(item.Key, item.Value);
         }
         UpdateStats();
-        //NextTurn();
+        TurnNumberText.text = $"Turn: {TurnNumber}";
+        ResultDescText.enabled = false;
+        ResultText.enabled = false;
     }
 
     private void UpdateStats()
@@ -130,15 +134,25 @@ public class GameController : MonoBehaviour
         var result = _hasDiceEndedRoll.Keys.Sum(x => x.Value);
 
         Debug.Log($"Result = {result}");
-        if(result > 6)
+        var policy = CardsQueue.Dequeue();
+        if (result > 5)
         {
-            var policy = CardsQueue.Dequeue();
             AppliedPolicies.Add(policy);
+            ResultDescText.enabled = true;
+            ResultDescText.text = $"{policy.Description} passed!";
+            ResultText.color = Color.green;
+            ResultDescText.color = Color.green;
         }
         else
         {
+            ResultDescText.enabled = true;
+            ResultDescText.text = $"{policy.Description} rejected";
             CardsQueue.Dequeue();
+            ResultText.color = Color.red;
+            ResultDescText.color = Color.red;
         }
+        ResultText.enabled = true;
+        ResultText.text = $"Result: {result}";
         SetCardQueue();
         ApplyPolicies();
         CheckLosingConditions();
@@ -189,6 +203,8 @@ public class GameController : MonoBehaviour
 
     private void StartDiceRoll()
     {
+        ResultDescText.enabled = false;
+        ResultText.enabled = false;
         //Ugly-ass hack :/
         var d1 = _hasDiceEndedRoll.Keys.First();
         var d2 = _hasDiceEndedRoll.Keys.Last();
