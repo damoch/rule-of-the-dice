@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public AudioManager AudioManager;
+    public GameObject VFX;
     public Text ResultText;
     public Text ResultDescText;
     public Text WarningsText;
@@ -58,6 +60,7 @@ public class GameController : MonoBehaviour
         ResultText.enabled = false;
     }
 
+
     private void UpdateStats()
     {
         var creditsPerTurn = AppliedPolicies.Sum(x => x.MoneyValue);
@@ -102,11 +105,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.F12))
+        {
+            VFX.SetActive(!VFX.activeInHierarchy);
+        }
     }
 
     public void NextTurn()
     {
+        AudioManager.OnBeginDiceRoll();
         NextTurnButton.interactable = false;
         TurnNumber++;
         Debug.Log("Turn " + TurnNumber);
@@ -137,19 +144,31 @@ public class GameController : MonoBehaviour
         var policy = CardsQueue.Dequeue();
         if (result > 5)
         {
+            AudioManager.PlayRollSuccess();
             AppliedPolicies.Add(policy);
             ResultDescText.enabled = true;
             ResultDescText.text = $"{policy.Description} passed!";
             ResultText.color = Color.green;
             ResultDescText.color = Color.green;
+
+            foreach (var item in _hasDiceEndedRoll.Keys)
+            {
+                item.gameObject.GetComponent<Image>().color = Color.green;
+            }
         }
         else
         {
+            AudioManager.PlayRollFailed();
             ResultDescText.enabled = true;
             ResultDescText.text = $"{policy.Description} rejected";
             CardsQueue.Dequeue();
             ResultText.color = Color.red;
             ResultDescText.color = Color.red;
+
+            foreach (var item in _hasDiceEndedRoll.Keys)
+            {
+                item.gameObject.GetComponent<Image>().color = Color.red;
+            }
         }
         ResultText.enabled = true;
         ResultText.text = $"Result: {result}";
@@ -203,6 +222,10 @@ public class GameController : MonoBehaviour
 
     private void StartDiceRoll()
     {
+        foreach (var item in _hasDiceEndedRoll.Keys)
+        {
+            item.gameObject.GetComponent<Image>().color = Color.white;
+        }
         ResultDescText.enabled = false;
         ResultText.enabled = false;
         //Ugly-ass hack :/
@@ -275,6 +298,7 @@ public class GameController : MonoBehaviour
 
     public void DiscardCard(int id)
     {
+        AudioManager.PlayDiscard();
         Debug.Log($"Discarding {id}");
         if (Stats.Money < CardsOnHand[id].DiscardCost)
         {
@@ -291,6 +315,7 @@ public class GameController : MonoBehaviour
 
     public void QueueCard(int id)
     {
+        AudioManager.PlayAddCard();
         var card = CardsOnHand[id];
         CardsQueue.Enqueue(card);
         Debug.Log($"Queueing card: {card.Description}");

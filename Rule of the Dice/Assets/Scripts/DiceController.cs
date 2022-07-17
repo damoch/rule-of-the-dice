@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DiceController : MonoBehaviour
 {
+    public AudioManager AM;
     public Texture2D[] Images;
     public Image DiceImage;
     private Dictionary<int, int> NumberToTextureId;
@@ -52,6 +53,7 @@ public class DiceController : MonoBehaviour
 
     private void DiceRoll()
     {
+        AM.OnDiceRoll();
         Value = UnityEngine.Random.Range(1,6);
         DiceImage.sprite = Sprite.Create(Images[Value - 1], DiceImage.sprite.rect, DiceImage.sprite.pivot);
         _pauseElapsed = 0;
