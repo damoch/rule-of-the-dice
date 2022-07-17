@@ -5697,6 +5697,69 @@ MonoBehaviour:
     DurationInTurns: 6
     DiscardCost: 1
     LongDescription: 
+  - Description: Invade another country
+    HappinesValue: -4
+    PollutionValue: 4
+    MoneyValue: -6
+    DurationInTurns: 10
+    DiscardCost: 5
+    LongDescription: 
+  - Description: Agricultural restoration
+    HappinesValue: 3
+    PollutionValue: -4
+    MoneyValue: 0
+    DurationInTurns: 6
+    DiscardCost: 1
+    LongDescription: 
+  - Description: Investment in renevable energy
+    HappinesValue: 3
+    PollutionValue: -4
+    MoneyValue: -4
+    DurationInTurns: 6
+    DiscardCost: 1
+    LongDescription: 
+  - Description: Border closure
+    HappinesValue: -7
+    PollutionValue: 0
+    MoneyValue: 0
+    DurationInTurns: 10
+    DiscardCost: 7
+    LongDescription: 
+  - Description: Intervention in foreign conflict
+    HappinesValue: -3
+    PollutionValue: 3
+    MoneyValue: -3
+    DurationInTurns: 6
+    DiscardCost: 6
+    LongDescription: 
+  - Description: Creation of waste facility
+    HappinesValue: -4
+    PollutionValue: 4
+    MoneyValue: 4
+    DurationInTurns: 6
+    DiscardCost: 5
+    LongDescription: 
+  - Description: Money printing
+    HappinesValue: -5
+    PollutionValue: 6
+    MoneyValue: -7
+    DurationInTurns: 6
+    DiscardCost: 5
+    LongDescription: 
+  - Description: Deforestation
+    HappinesValue: -4
+    PollutionValue: 4
+    MoneyValue: 4
+    DurationInTurns: 6
+    DiscardCost: 8
+    LongDescription: 
+  - Description: Forest restoration
+    HappinesValue: 4
+    PollutionValue: 4
+    MoneyValue: 2
+    DurationInTurns: 6
+    DiscardCost: 5
+    LongDescription: 
   CardsOnHandGUI:
   - {fileID: 2086845132}
   - {fileID: 275079137}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -405,6 +406,6 @@ public class GameController : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("Game over");
-        Debug.Break();
+        SceneManager.LoadScene("GameOver");
     }
 }
